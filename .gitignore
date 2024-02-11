@@ -2,4 +2,6 @@
 __pycache__
 media 
 slides
-.vscode/settings.json
+.vscode
+html_render_assets
+html_render.html
