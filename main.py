@@ -96,7 +96,7 @@ def slide_7(slide):
 
     slide.next_slide()
     bin_maths =Text("1101= 8+4+0+1",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(DOWN*1.85)
-    sub_bin_maths =Text("(13)",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(DOWN*1.95)
+    sub_bin_maths =Text("(adica 13)",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(DOWN*2.5).shift(RIGHT*0.89)
     slide.play(Write(sub_bin_maths),Write(bin_maths),run_time=APPEAR_SPEED)
 
     slide.next_slide()
