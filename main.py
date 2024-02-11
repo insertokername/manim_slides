@@ -55,7 +55,7 @@ def slide_4(slide):
 
 class BasicExample(Slide):
     def construct(self):
-        self.camera.background_color = DARKER_GREY
+        self.camera.background_color = DARKER_GRAY
         slide_1(self)
         slide_2(self)
         slide_3(self)
