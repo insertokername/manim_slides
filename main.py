@@ -109,7 +109,7 @@ def slide_7(slide):
     slide.play(Uncreate(sub_bin_maths),Uncreate(Title),Uncreate(bin_maths),Uncreate(dec_maths),Uncreate(bin_table),Uncreate(dec_table),run_time=DISAPPEAR_SPEED)
     slide.play(Wait(0.15))
 
-class BasicExample(Slide):
+class IEEPresentation(Slide):
     def construct(self):
         self.camera.background_color = DARKER_GRAY
         slide_1(self)
