@@ -2,9 +2,9 @@ from manim import *
 
 from manim_slides import Slide
 
-TITLE_SIZE = 75
-SUB_SIZE = 40
-APPEAR_SPEED = 1.25
+TITLE_SIZE = 60
+SUB_SIZE = 30
+APPEAR_SPEED = 1.3
 DISAPPEAR_SPEED=0.5
 
 TOP_POS = UP*2.8
@@ -56,7 +56,6 @@ def slide_4(slide):
     slide.play(Wait(0.15))
 
 def slide_5(slide):
-
     Title = Text("S-o luam cu inceputul", font_size=TITLE_SIZE)
     
     slide.play(Write(Title),run_time=APPEAR_SPEED)
@@ -85,37 +84,186 @@ def slide_7(slide):
     slide.play(Wait(0.1))
 
     slide.next_slide()
-    dec_maths =Text("123 = 100+20+3", font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(UP*1)
+    dec_maths =Text("123 = 100+20+3", font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(RIGHT*1.7).shift(UP*1)
     slide.play(Write(dec_maths),run_time=APPEAR_SPEED,)
 
     slide.next_slide()
-    dec_table = Table(
+    dec_table = VGroup(Table(
         [["100", "10","1"],
-        ["1", "2", "3"]]).to_edge(RIGHT).shift(UP*0.9).shift(LEFT*0.74)
+        ["1", "2", "3"]]).to_edge(RIGHT).shift(UP*0.9).shift(LEFT*1.74)).scale(0.8)
     slide.play(DrawBorderThenFill(dec_table),run_time=APPEAR_SPEED)
 
     slide.next_slide()
-    bin_maths =Text("1101= 8+4+0+1",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(DOWN*1.85)
-    sub_bin_maths =Text("(adica 13)",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(DOWN*2.5).shift(RIGHT*0.89)
-    slide.play(Write(sub_bin_maths),Write(bin_maths),run_time=APPEAR_SPEED)
+    bin_maths =Text("101= 4+0+1  (5)",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(RIGHT*1.7).shift(DOWN*1.85)
+#    sub_bin_maths =Text("(5)",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(DOWN*2.5).shift(RIGHT*1.3)
+    slide.play(Write(bin_maths),run_time=APPEAR_SPEED)
 
     slide.next_slide()
-    bin_table = Table(
-        [["8","4", "2","1"],
-        ["1", "1", "0", "1"]]).to_edge(RIGHT).shift(DOWN*2).shift(LEFT*0.24)
+    bin_table = VGroup(Table(
+        [["4", "2","1"],
+        ["1", "0", "1"]]).to_edge(RIGHT).shift(DOWN*2).shift(LEFT*2.3)).scale(0.8)
     slide.play(DrawBorderThenFill(bin_table),run_time = APPEAR_SPEED)
 
     slide.next_slide()
-    slide.play(Uncreate(sub_bin_maths),Uncreate(Title),Uncreate(bin_maths),Uncreate(dec_maths),Uncreate(bin_table),Uncreate(dec_table),run_time=DISAPPEAR_SPEED)
+    group = VGroup(Title,dec_maths,bin_maths,dec_maths,bin_table,dec_table)
+    other_group = VGroup(
+        Text("Mai multe exemple:", font_size=TITLE_SIZE*0.95).shift(TOP_POS),
+        Text("1101= 8+4+0+1",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(RIGHT*1.6),
+        Text("(adica 13)",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(DOWN*0.67).shift(RIGHT*0.89).shift(RIGHT*1.6),
+        VGroup(Table(
+            [["8","4", "2","1"],
+            ["1", "1", "0", "1"]]).to_edge(RIGHT).shift(LEFT*1.24)).scale(0.8)
+    ).shift(DOWN*0.3).scale(0.8)
+    slide.play(Transform(group,other_group))
+
+    slide.next_slide()
+    other_group = VGroup(
+        Text("Mai multe exemple:", font_size=TITLE_SIZE*0.95).shift(TOP_POS),
+        Text("111001= 32+16+8+0+0+1",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(LEFT*0.6),
+        Text("(adica 57)",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(DOWN*0.67).shift(RIGHT*1.6),
+        VGroup(Table(
+            [["32","16","8","4","2","1"],
+            ["1","1","1","0","0","1"]]).to_edge(RIGHT).shift(RIGHT*1.66)).scale(0.8)
+    ).shift(DOWN*0.3).scale(0.8)
+    slide.play(Transform(group,other_group))
+
+    slide.next_slide()
+    group = VGroup(Title,dec_maths,bin_maths,dec_maths,bin_table,dec_table)
+    other_group = VGroup(
+        Text("Mai multe exemple:", font_size=TITLE_SIZE*0.95).shift(TOP_POS),
+        Text("11.01= 2+1+0+0.25",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(RIGHT*1.1),
+        Text("(adica 3.25)",font_size=SUB_SIZE,slant="ITALIC").to_edge(LEFT).shift(DOWN*0.67).shift(RIGHT*1.59),
+        VGroup(Table(
+            [["2","1","0.5","0.25"],
+            ["1","1","0","1"]]).to_edge(RIGHT).shift(LEFT*0.7)).scale(0.8)
+    ).shift(DOWN*0.3).scale(0.8)
+    slide.play(Transform(group,other_group))
+    
+    slide.next_slide()
+    slide.play(Unwrite(group),run_time=DISAPPEAR_SPEED)
+    #slide.play(Uncreate(sub_bin_maths),Uncreate(Title),Uncreate(bin_maths),Uncreate(dec_maths),Uncreate(bin_table),Uncreate(dec_table),run_time=DISAPPEAR_SPEED)
+    slide.play(Wait(0.15))
+
+def slide_8(slide):
+    group = VGroup(
+        Text("Memoria fizica:", font_size=TITLE_SIZE*0.95).shift(TOP_POS),
+        Text("00000000 00000000 00000000 00000000")
+    ).shift(DOWN*0.3).scale(0.8)
+    
+    slide.play(Write(group))
+    
+    slide.next_slide()
+    other_group = VGroup(
+        Text("De exemplu:", font_size=TITLE_SIZE*0.95).shift(TOP_POS),
+        Text("00000000 00000000 00000101 10010011\n=1427")
+    ).shift(DOWN*0.3).scale(0.8)
+    slide.play(Transform(group,other_group),run_time=APPEAR_SPEED)
+
+    slide.next_slide()
+    slide.play(Unwrite(group),run_time=DISAPPEAR_SPEED)
+    slide.play(Wait(0.15))
+
+def slide_9(slide):
+    group = VGroup(
+        Text("Reprezentarea numerlor rationale:", font_size=TITLE_SIZE)
+    ).shift(DOWN*0.3).scale(0.8)
+    slide.play(Write(group,run_time=APPEAR_SPEED))
+
+
+    slide.next_slide()
+    other_group = VGroup(
+        Text("O solutie simpla:", font_size=TITLE_SIZE*0.95).shift(TOP_POS),
+        Text("00000000 00000000.00000000 00000000")
+    ).shift(DOWN*0.3).scale(0.8)
+    slide.play(Transform(group,other_group,run_time=APPEAR_SPEED))
+
+    slide.next_slide()
+    other_group = VGroup(
+        Text("De exemplu:", font_size=TITLE_SIZE*0.95).shift(TOP_POS),
+        Text("00000000 00000011.10000000 00000000\n=3.5"),
+    ).shift(DOWN*0.3).scale(0.8)
+    slide.play(Transform(group,other_group,run_time=APPEAR_SPEED))
+
+    slide.next_slide()
+    other_group = VGroup(
+        Text("Capacitatea maxima:", font_size=TITLE_SIZE*0.95).shift(TOP_POS),
+        Text("11111111 11111111.11111111 11111111\n=~65536.999985"),
+    ).shift(DOWN*0.3).scale(0.8)
+    slide.play(Transform(group,other_group,run_time=APPEAR_SPEED))
+
+    slide.next_slide()
+    slide.play(Unwrite(group),run_time=DISAPPEAR_SPEED)
+    slide.play(Wait(0.15))
+
+def slide_10(slide):
+    Title = Text("Un compromis", font_size=TITLE_SIZE).shift(UP*0.5)
+    Subtitle = Text("marime > precizie", font_size=SUB_SIZE,slant="ITALIC").shift(DOWN*0.5)
+
+    slide.play(Write(Title),Write(Subtitle),run_time=APPEAR_SPEED)
+    slide.play(Wait(0.1))
+    slide.next_slide()
+
+    slide.play(Uncreate(Title),Uncreate(Subtitle),run_time=DISAPPEAR_SPEED)
+    slide.play(Wait(0.15))
+
+def slide_11(slide):
+        
+    text = Text("Notatia stiintifica a unui numar:", font_size=TITLE_SIZE).shift(TOP_POS)
+    slide.play(Write(text))
+    
+    slide.next_slide()
+    group = VGroup(
+        MathTex(r"1000 = 1*10^{3}")
+    ).shift(DOWN*0.3).scale(1.7)
+    
+    slide.play(Write(group))
+    
+    slide.next_slide()
+    other_group = VGroup(
+        MathTex(r"2249 = 2.249*10^{3}")
+    ).shift(DOWN*0.3).scale(1.7)
+    slide.play(Transform(group,other_group,run_time=APPEAR_SPEED))
+
+    slide.next_slide()
+    slide.play(Unwrite(group),Unwrite(text),run_time=DISAPPEAR_SPEED)
+    slide.play(Wait(0.15))
+
+def slide_12(slide):
+        
+    text = Text("Notatia stiintifica binara:", font_size=TITLE_SIZE).shift(TOP_POS)
+    slide.play(Write(text))
+    
+    slide.next_slide()
+    group = VGroup(
+        MathTex(r"1011 = 1.011*2^{3}"),
+        Text("\n(11)",font_size=SUB_SIZE).shift(DOWN*0.6).shift(LEFT*1.4)
+    ).shift(DOWN*0.3).scale(1.7)
+    
+    slide.play(Write(group))
+    
+    slide.next_slide()
+    other_group = VGroup(
+        MathTex(r"11.001 = 1.1001*2^{1}"),
+        Text("\n(3.125)",font_size=SUB_SIZE).shift(DOWN*0.6).shift(LEFT*1.4)
+    ).shift(DOWN*0.3).scale(1.7)
+    slide.play(Transform(group,other_group,run_time=APPEAR_SPEED))
+
+    slide.next_slide()
+    slide.play(Unwrite(group),Unwrite(text),run_time=DISAPPEAR_SPEED)
     slide.play(Wait(0.15))
 
 class IEEPresentation(Slide):
     def construct(self):
         self.camera.background_color = DARKER_GRAY
-        slide_1(self)
-        slide_2(self)
-        slide_3(self)
-        slide_4(self)
-        slide_5(self)
-        slide_6(self)
-        slide_7(self)
+        #slide_1(self)
+        #slide_2(self)
+        #slide_3(self)
+        #slide_4(self)
+        #slide_5(self)
+        #slide_6(self)
+        #slide_7(self)
+        #slide_8(self)
+        #slide_9(self)
+        slide_10(self)
+        slide_11(self)
+        slide_12(self)
