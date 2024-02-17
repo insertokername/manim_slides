@@ -263,23 +263,39 @@ def slide_13(slide):
     mantissa=Text("00000000000000000000000",font_size=SUB_SIZE*1.4).shift(RIGHT*2.2)
 
     eq = MathTex(r"x*2",font_size=TITLE_SIZE).shift(DOWN*1.5)
-    pow = MathTex(r"^{y}",font_size=TITLE_SIZE).shift(DOWN*1.3).shift(RIGHT*0.87)
+    y_pow = MathTex(r"^{y}",font_size=TITLE_SIZE).shift(DOWN*1.3).shift(RIGHT*0.87)
 
     
     #shift(DOWN*0.3).scale(0.8)
-    slide.play(Write(eq),Write(pow),DrawBorderThenFill(sign),DrawBorderThenFill(expo),DrawBorderThenFill(mantissa),run_time=APPEAR_SPEED)
+    slide.play(Write(eq),Write(y_pow),DrawBorderThenFill(sign),DrawBorderThenFill(expo),DrawBorderThenFill(mantissa),run_time=APPEAR_SPEED)
 
     slide.next_slide()
-    slide.play(Indicate(sign),run_time=3)
+    sign.set_color(YELLOW)
+    slide.play(ScaleInPlace(sign,2),run_time=0.5);
+
+    #slide.play(Indicate(sign),run_time=3)
 
     slide.next_slide()
-    slide.play(Indicate(expo),Indicate(pow),run_time=3)
+    sign.set_color(WHITE)
+    slide.play(ScaleInPlace(sign,0.5),run_time=0.5)
+    expo.set_color(YELLOW)
+    y_pow.set_color(YELLOW)
+    slide.play(ScaleInPlace(expo,1.55),ScaleInPlace(y_pow,1.55),run_time=0.5)
+
+    
+    slide.next_slide()
+    slide.play(ScaleInPlace(expo,0.645),ScaleInPlace(y_pow,0.645),run_time=0.5)
+    expo.set_color(WHITE)
+    y_pow.set_color(WHITE)
+    eq.set_color(YELLOW)
+    mantissa.set_color(YELLOW)
+    slide.play(ScaleInPlace(mantissa,1.25),ScaleInPlace(eq,1.35),run_time=0.5)
 
     slide.next_slide()
-    slide.play(Indicate(mantissa),Indicate(eq),run_time=3)
-
-    slide.next_slide()
-    slide.play(Unwrite(eq),Unwrite(pow),Unwrite(sign),Unwrite(expo),Unwrite(mantissa),Unwrite(text),run_time=DISAPPEAR_SPEED)
+    slide.play(ScaleInPlace(mantissa,0.8),ScaleInPlace(eq,0.74),run_time=0.5)
+    mantissa.set_color(WHITE)
+    eq.set_color(WHITE)
+    slide.play(Unwrite(eq),Unwrite(y_pow),Unwrite(sign),Unwrite(expo),Unwrite(mantissa),Unwrite(text),run_time=DISAPPEAR_SPEED)
     slide.play(Wait(0.15))
 
 def slide_14(slide):
@@ -311,7 +327,6 @@ def slide_14(slide):
     slide.play(Unwrite(group),Unwrite(text),run_time=DISAPPEAR_SPEED)
     slide.play(Wait(0.15))
     
-
 def slide_15(slide):
     text = Text("Mantisa:", font_size=TITLE_SIZE).shift(TOP_POS*0.8)
     slide.play(Write(text))
